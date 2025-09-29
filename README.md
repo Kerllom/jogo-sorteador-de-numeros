@@ -1,135 +1,96 @@
 ![Status ](https://img.shields.io/badge/Status-Em%20desenvolvimento-brightgreen)
 
+---
+
+# 🎰 Sorteador de Números Aleatórios
+
+Uma aplicação simples, dinâmica e eficiente para **sortear números aleatórios sem repetições**, dentro de um intervalo personalizado. Ideal para **sorteios, rifas, jogos, atividades educacionais**, entre outras situações que exigem imparcialidade e aleatoriedade.
 
 ---
 
-# 🎲✨ Jogo do Número Secreto
+## ✨ Funcionalidades
 
-Um jogo divertido em **JavaScript**, onde o desafio é adivinhar um número secreto entre **1 e 50**.
-Receba dicas, conte suas tentativas e reinicie quando vencer.
+🔢 **Sorteio Personalizado**
+Escolha quantos números deseja sortear e defina o intervalo (de X até Y). O sistema garante que não haverá números repetidos.
+
+⚠️ **Validação Inteligente**
+Evita erros comuns, como:
+
+* Intervalo inválido (ex: número inicial maior que o final).
+* Quantidade maior que o total de números possíveis.
+
+♻️ **Reinício Instantâneo**
+Com um clique, limpe os campos, zere os resultados e prepare-se para um novo sorteio.
+
+🧠 **Algoritmo Eficiente**
+Os números são gerados aleatoriamente e verificados para garantir exclusividade, mesmo em sorteios com grandes quantidades.
+
+🧼 **Interface Limpa e Didática**
+Exibição clara dos números sorteados e mensagens informativas durante o processo.
 
 ---
 
-## 📌 Funcionalidades
+## 🧾 Descrição do Processo
 
-✅ Sorteia um número entre **1 e 50**
-✅ Garante que o mesmo número não se repita até todos terem sido sorteados
-✅ Conta e exibe o número de tentativas
-✅ Dá dicas: “maior” ou “menor”
-✅ Feedback em **voz** usando a API **ResponsiveVoice**
-✅ Botão para reiniciar o jogo
+1. ✍️ O usuário informa:
+
+   * A **quantidade** de números desejados.
+   * O número **mínimo** (início do intervalo).
+   * O número **máximo** (fim do intervalo).
+
+2. 🧪 O sistema valida os dados para evitar inconsistências.
+
+3. 🔄 Os números são sorteados **aleatoriamente e sem repetição**.
+
+4. 🎉 O resultado é exibido na tela, com visual amigável.
+
+5. 🔁 O botão de reinício é ativado para permitir novos sorteios rapidamente.
 
 ---
 
-## 🛠️ Estrutura do Código
+## 🛡️ Regras de Validação
 
-### 🔹 Variáveis principais
+❌ O campo "**Do número**" deve ser **menor** que o campo "**Até o número**".
 
-```js
-let listaDeNumerosSorteados = []; // Guarda os números já usados
-let numeroLimite = 50;           // Limite do sorteio
-let numeroSecreto = gerarNumeroAleatorio(); 
-let tentativas = 1;              // Contador de tentativas
+❌ A **quantidade** deve ser **menor ou igual ao total de números disponíveis** no intervalo escolhido.
+
+🔄 Caso um número sorteado já tenha saído, o sistema tenta novamente até encontrar um número inédito.
+
+---
+
+## 📌 Exemplo de Uso
+
+Imagine que você quer sortear **5 números entre 1 e 50**:
+
+```plaintext
+Quantidade: 5
+De: 1
+Até: 50
+
+✅ Números sorteados: 8, 17, 34, 22, 41
 ```
 
----
-
-### 🔹 Principais Funções
-
-📢 **exibirTextoNaTela(tag, texto)**
-Exibe mensagens em elementos HTML e as lê em voz alta.
-
-🎯 **verificarChute()**
-
-* Confere se o número digitado é o secreto.
-* Mostra mensagens de acerto/erro.
-* Dá dicas se o número secreto é maior ou menor.
-* Incrementa tentativas.
-
-🎲 **gerarNumeroAleatorio()**
-
-* Sorteia um número entre `1` e `numeroLimite`.
-* Garante que não haja repetições.
-* Reinicia a lista quando todos já foram sorteados.
-
-🧹 **limparCampo()**
-Limpa o campo de input.
-
-🔄 **reiniciarJogo()**
-Reseta as variáveis, sorteia um novo número e reexibe a mensagem inicial.
+Com um clique em **"Reiniciar"**, o sistema volta ao estado inicial, pronto para um novo sorteio.
 
 ---
 
-## 🎮 Fluxo do Jogo
+## 🛠️ Possíveis Melhorias Futuras
 
-1️⃣ Página inicial mostra:
+🌈 Exibição animada dos números sorteados
 
-* **Título:** “Jogo do número secreto”
-* **Mensagem:** “Escolha um número entre 1 e 50”
+📊 Histórico dos sorteios anteriores
 
-2️⃣ Jogador digita um número no input.
+📁 Exportação de resultados (TXT, CSV, PDF)
 
-3️⃣ O sistema responde:
+📱 Versão mobile com interface adaptativa
 
-* 🔼 “O número secreto é maior”
-* 🔽 “O número secreto é menor”
-
-4️⃣ Ao acertar:
-
-* 🎉 “Acertou!”
-* Mostra a quantidade de tentativas
-* Botão de reinício é habilitado
+🎨 Personalização de tema e estilo visual
 
 ---
 
-## 🧰 Tecnologias
+## 📃 Licença
 
-* **JavaScript (ES6+)** → lógica do jogo
-* **HTML/CSS** → interface
-* **ResponsiveVoice** → narração das mensagens
+Este projeto é de **código aberto** e pode ser utilizado para fins **educacionais, pessoais ou não comerciais**.
 
 ---
-
-## ▶️ Como Executar
-
-1. Crie um arquivo **index.html** e adicione:
-
-   * Um campo `<input>` para o chute
-   * Um botão “Chutar” (chama `verificarChute()`)
-   * Um botão “Reiniciar” (chama `reiniciarJogo()`, inicialmente `disabled`)
-2. Inclua o script JavaScript.
-3. Abra o arquivo no navegador.
-
----
-
-## 🌟 Exemplo Visual de Estrutura HTML
-
-```html
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <title>Jogo do Número Secreto</title>
-  <script src="script.js" defer></script>
-</head>
-<body>
-  <h1>Jogo do número secreto</h1>
-  <p>Escolha um número entre 1 e 50</p>
-  <input type="number" min="1" max="50">
-  <button onclick="verificarChute()">Chutar</button>
-  <button id="reiniciar" onclick="reiniciarJogo()" disabled>Reiniciar</button>
-</body>
-</html>
-```
-
----
-
-## 🚀 Demonstração
-
-🔢 Tente adivinhar o número secreto!
-Cada erro dá uma dica até você acertar.
-Quando vencer, reinicie e jogue novamente! 🎉
-
----
-
 
